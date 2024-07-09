@@ -1,6 +1,7 @@
 import 'package:expense_manager/presentation/global_widget/custom_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../sql_helper/add_expense_helper.dart';
@@ -101,6 +102,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                         controller: _incomeSourceController,
                         hintText: "Add a income source",
                         textInputType: TextInputType.number,
+                        onTapCallback: () {},
                       ),
                     ],
                   ),
@@ -115,9 +117,25 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                         controller: _addAmountController,
                         hintText: "Add the number of amount",
                         textInputType: TextInputType.number,
+                        onTapCallback: () {},
                       ),
                     ],
                   ),
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     const Text(
+                  //       'Date: ',
+                  //       style: AppStyle.font16Weight400Black,
+                  //     ),
+                  //     CustomTextField(
+                  //       controller: _addDateController,
+                  //       hintText: "DD-MM-YYYY",
+                  //       textInputType: TextInputType.number,
+                  //       onTapCallback: () {},
+                  //     ),
+                  //   ],
+                  // ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -127,24 +145,21 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                       ),
                       CustomTextField(
                         controller: _addDateController,
-                        hintText: "DD-MM-YYYY",
+                        hintText: "Select a Date",
                         textInputType: TextInputType.number,
+                        prefixIcon: Icon(Icons.calendar_month_sharp),
+                        onTapCallback: () {
+                          _selectDatePicker();
+                        },
                       ),
                     ],
                   ),
-                  // CustomDatePicker(
-                  //   // addExpenseDateProvider,
-                  //   ref.watch(addExpenseDateProvider),
-                  //   readOnly: true,
-                  //   buttonCallback: () => DateHelpers.selectDate(
-                  //       context, ref, addExpenseDateProvider),
-                  //   validator: () => Validators.datePickerValidator(
-                  //       ref.watch(addExpenseDateProvider)),
-                  // ),
+
                   const SizedBox(
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
                           onPressed: () async {
@@ -162,6 +177,9 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                             Navigator.of(context).pop();
                           },
                           child: Text(id == null ? 'Create New' : 'Update')),
+                      const SizedBox(
+                        width: 20,
+                      ),
                       id != null
                           ? ElevatedButton(
                               onPressed: () async {
@@ -206,6 +224,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                         controller: _incomeSourceController,
                         hintText: "Add a income source",
                         textInputType: TextInputType.number,
+                        onTapCallback: () {},
                       ),
                     ],
                   ),
@@ -220,6 +239,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                         controller: _addAmountController,
                         hintText: "Add the number of amount",
                         textInputType: TextInputType.number,
+                        onTapCallback: () {},
                       ),
                     ],
                   ),
@@ -232,15 +252,39 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                       ),
                       CustomTextField(
                         controller: _addDateController,
-                        hintText: "DD-MM-YYYY",
+                        hintText: "Select a Date",
                         textInputType: TextInputType.number,
+                        prefixIcon: Icon(Icons.calendar_month_sharp),
+                        onTapCallback: () {
+                          _selectDatePicker();
+                        },
                       ),
+                      // TextField(
+                      //   controller: _addDateController,
+                      //   decoration: const InputDecoration(
+                      //     labelText: "Select a Date",
+                      //     filled: true,
+                      //     prefixIcon: Icon(Icons.date_range),
+                      //     enabledBorder: OutlineInputBorder(
+                      //       borderSide: BorderSide.none,
+                      //     ),
+                      //     focusedBorder: OutlineInputBorder(
+                      //       borderSide: BorderSide(color: Colors.blue),
+                      //     ),
+                      //   ),
+                      //   enableInteractiveSelection: false,
+                      //   // enabled: false,
+                      //   onTap: () {
+                      //     _selectDatePicker();
+                      //   },
+                      // ),
                     ],
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
                           onPressed: () async {
@@ -268,13 +312,13 @@ class _AddAmountState extends ConsumerState<AddAmount> {
     _addDateController.clear();
   }
 
-  @override
-  void dispose() {
-    _incomeSourceController.dispose();
-    _addAmountController.dispose();
-    _addDateController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _incomeSourceController.dispose();
+  //   _addAmountController.dispose();
+  //   _addDateController.dispose();
+  //   super.dispose();
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -297,32 +341,6 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                   itemCount: _addAmount.length,
                   itemBuilder: (context, index) => Card(
                         color: Color(0XFF5193BB),
-                        // margin: const EdgeInsets.all(15),
-                        // child: ListTile(
-                        //   title: Text(_addAmount[index]['source_of_income']),
-                        //   subtitle:
-                        //       Text(_addAmount[index]['add_amount_date_time']),
-                        //   trailing: SizedBox(
-                        //     width: 100,
-                        //     child: Row(
-                        //       children: [
-                        //         Text(_addAmount[index]['add_amount']),
-                        //         // IconButton(
-                        //         //     onPressed: () =>
-                        //         //         _showForm(_addAmount[index]['id']),
-                        //         //     icon: const Icon(Icons.edit)),
-                        //         // IconButton(
-                        //         //     onPressed: () =>
-                        //         //         _deleteItem(_journals[index]['id']),
-                        //         //     icon: const Icon(Icons.delete)),
-                        //         IconButton(
-                        //             onPressed: () =>
-                        //                 _showForm(_addAmount[index]['id']),
-                        //             icon: Icon(Icons.arrow_forward_ios)),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -332,10 +350,14 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(
-                                    _addAmount[index]['source_of_income'],
-                                    softWrap: true,
-                                    overflow: TextOverflow.clip,
+                                  SizedBox(
+                                    width: 80,
+                                    child: Text(
+                                      _addAmount[index]['source_of_income'],
+                                      softWrap: true,
+                                      overflow: TextOverflow.clip,
+                                      maxLines: 2,
+                                    ),
                                   ),
                                   Text(
                                     _addAmount[index]['add_amount_date_time'],
@@ -381,5 +403,21 @@ class _AddAmountState extends ConsumerState<AddAmount> {
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add), onPressed: () => _createForm(null)),
     );
+  }
+
+  Future<void> _selectDatePicker() async {
+    print("Date time method called");
+    DateTime? _addAmountDatePicked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1998),
+      lastDate: DateTime.now().subtract(Duration(days: 0)),
+    );
+
+    if (_addAmountDatePicked != null) {
+      setState(() {
+        _addDateController.text = _addAmountDatePicked.toString().split(" ")[0];
+      });
+    }
   }
 }

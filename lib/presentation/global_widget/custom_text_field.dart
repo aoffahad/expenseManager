@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final double? height;
   final double? width;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final Color? color;
   final bool readOnly;
   final int? maxLine;
@@ -16,12 +17,14 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String)? onChangeCallback;
   final String? Function(String? value)? validator;
+  final VoidCallback onTapCallback;
 
   const CustomTextField({
     super.key,
     this.height,
     this.width,
     this.suffixIcon,
+    this.prefixIcon,
     this.color,
     this.readOnly = false,
     this.textInputType = TextInputType.text,
@@ -31,6 +34,7 @@ class CustomTextField extends StatelessWidget {
     this.onChangeCallback,
     this.isObSecureText = false,
     this.controller,
+    required this.onTapCallback,
   });
 
   @override
@@ -57,6 +61,7 @@ class CustomTextField extends StatelessWidget {
               obscureText: isObSecureText,
               onChanged: onChangeCallback,
               decoration: InputDecoration(
+                prefixIcon: prefixIcon,
                 contentPadding: EdgeInsets.only(top: 15, left: 14),
                 hintText: hintText,
                 hintStyle: const TextStyle(
@@ -72,6 +77,9 @@ class CustomTextField extends StatelessWidget {
                 enabledBorder: AppStyle.outlineInputBorder,
                 focusedBorder: AppStyle.outlineInputBorder,
               ),
+              onTap: () {
+                onTapCallback.call();
+              },
             );
           },
         ),
