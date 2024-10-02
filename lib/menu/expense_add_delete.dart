@@ -75,23 +75,6 @@ class ExpenseAddDelete extends ConsumerWidget {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        // ListView.separated(
-                        //   padding: EdgeInsets.all(15),
-                        //   itemCount: 20,
-                        //   separatorBuilder: (BuildContext context, int index) =>
-                        //       const Divider(),
-                        //   itemBuilder: (context, index) {
-                        //     return ListTile(
-                        //         onTap: () {},
-                        //         title: Text("Chat List $index"),
-                        //         subtitle: Text("History"),
-                        //         trailing: IconButton(
-                        //             onPressed: () {
-                        //               print("Button Pressed");
-                        //             },
-                        //             icon: Icon(Icons.chat_bubble)));
-                        //   },
-                        // ),
                         const AddAmount(),
                         ListView.separated(
                           padding: EdgeInsets.all(15),

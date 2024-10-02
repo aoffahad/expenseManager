@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../sql_helper/add_expense_helper.dart';
+import '../../../../sql_helper/add_amount_helper.dart';
 import '../../../../theme/app_style.dart';
 
 class AddAmount extends ConsumerStatefulWidget {
