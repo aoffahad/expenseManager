@@ -31,7 +31,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
   void initState() {
     super.initState();
     _refreshAddAmount();
-    print("..number of items ${_addAmount.length}");
+    print("..number of items ${_addAmount.length + 1}");
   }
 
   static final TextEditingController _addAmountController =

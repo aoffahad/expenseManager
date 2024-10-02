@@ -13,8 +13,8 @@ class AddExpenseSQLHelper {
   }
 
   static Future<sql.Database> db() async {
-    return sql.openDatabase('expense_manager.db', // any name we can put
-        version: 1, onCreate: (sql.Database database, int version) async {
+    return sql.openDatabase('add_manager.db', version: 1,
+        onCreate: (sql.Database database, int version) async {
       print("...creating a table...");
       await createTables(database);
     });
