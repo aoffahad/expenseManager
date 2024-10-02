@@ -31,6 +31,7 @@ class AddExpenseSQLHelper {
     };
     final id = await db.insert('items', data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    // final items = await db.query('items', orderBy: 'add_amount_date_time DESC');
     return id;
   }
 

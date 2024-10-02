@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
               readOnly: readOnly,
               keyboardType: textInputType,
               validator: validator,
-              autovalidateMode: AutovalidateMode.disabled,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               obscureText: isObSecureText,
               onChanged: onChangeCallback,
               decoration: InputDecoration(
