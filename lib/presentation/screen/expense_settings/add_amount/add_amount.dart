@@ -20,7 +20,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
   List<Map<String, dynamic>> _addAmount = [];
 
   void _refreshAddAmount() async {
-    final data = await AddExpenseSQLHelper.getItems();
+    final data = await AddAmountSQLHelper.getItems();
     setState(() {
       _addAmount = data;
       // _isLoading = false;
@@ -43,7 +43,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Future<void> _addItem() async {
-    await AddExpenseSQLHelper.createItem(_incomeSourceController.text,
+    await AddAmountSQLHelper.createItem(_incomeSourceController.text,
         _addAmountController.text, _addDateController.text);
     _refreshAddAmount();
     print("..number of items ${_addAmount.length}");
@@ -51,13 +51,13 @@ class _AddAmountState extends ConsumerState<AddAmount> {
   }
 
   Future<void> _updateItem(int id) async {
-    await AddExpenseSQLHelper.updateItem(id, _incomeSourceController.text,
+    await AddAmountSQLHelper.updateItem(id, _incomeSourceController.text,
         _addAmountController.text, _addDateController.text);
     _refreshAddAmount();
   }
 
   Future<void> _deleteItem(int id) async {
-    await AddExpenseSQLHelper.deleteItem(id);
+    await AddAmountSQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Successfully deleated a Added History!')));
     _refreshAddAmount();

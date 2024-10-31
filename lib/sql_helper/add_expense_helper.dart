@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:flutter/foundation.dart';
 
-class AddAmountSQLHelper {
+class AddExpenseSQLHelper {
   static Future<void> createTables(sql.Database database) async {
     await database.execute("""CREATE TABLE items(
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -13,7 +13,7 @@ class AddAmountSQLHelper {
   }
 
   static Future<sql.Database> db() async {
-    return sql.openDatabase('add_manager.db', version: 1,
+    return sql.openDatabase('add_expense.db', version: 1,
         onCreate: (sql.Database database, int version) async {
       print("...creating a table...");
       await createTables(database);
@@ -22,7 +22,7 @@ class AddAmountSQLHelper {
 
   static Future<int> createItem(String sourceOfIncome, String? addAmount,
       String? addAmountDateTime) async {
-    final db = await AddAmountSQLHelper.db();
+    final db = await AddExpenseSQLHelper.db();
 
     final data = {
       'source_of_income': sourceOfIncome,
@@ -36,18 +36,18 @@ class AddAmountSQLHelper {
   }
 
   static Future<List<Map<String, dynamic>>> getItems() async {
-    final db = await AddAmountSQLHelper.db();
+    final db = await AddExpenseSQLHelper.db();
     return db.query('items', orderBy: "id");
   }
 
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
-    final db = await AddAmountSQLHelper.db();
+    final db = await AddExpenseSQLHelper.db();
     return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
   static Future<int> updateItem(int id, String sourceOfIncome,
       String? addAmount, String? addAmountDateTime) async {
-    final db = await AddAmountSQLHelper.db();
+    final db = await AddExpenseSQLHelper.db();
 
     final data = {
       'source_of_income': sourceOfIncome,
@@ -62,7 +62,7 @@ class AddAmountSQLHelper {
   }
 
   static Future<void> deleteItem(int id) async {
-    final db = await AddAmountSQLHelper.db();
+    final db = await AddExpenseSQLHelper.db();
     try {
       await db.delete("items", where: "id = ?", whereArgs: [id]);
     } catch (err) {

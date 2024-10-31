@@ -1,3 +1,4 @@
+import 'package:expense_manager/presentation/screen/expense_settings/add_expense/add_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -75,24 +76,28 @@ class ExpenseAddDelete extends ConsumerWidget {
                   Expanded(
                     child: TabBarView(
                       children: [
+                        /// Tab 1 (Add Amount)
                         const AddAmount(),
-                        ListView.separated(
-                          padding: EdgeInsets.all(15),
-                          itemCount: 20,
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const Divider(),
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                                onTap: () {},
-                                title: Text("Status List $index"),
-                                subtitle: Text("History"),
-                                trailing: IconButton(
-                                    onPressed: () {
-                                      print("Button Pressed");
-                                    },
-                                    icon: Icon(Icons.stacked_bar_chart)));
-                          },
-                        ),
+
+                        /// Tab 2 (Add Expense)
+                        AddExpense(),
+                        // ListView.separated(
+                        //   padding: EdgeInsets.all(15),
+                        //   itemCount: 20,
+                        //   separatorBuilder: (BuildContext context, int index) =>
+                        //       const Divider(),
+                        //   itemBuilder: (context, index) {
+                        //     return ListTile(
+                        //         onTap: () {},
+                        //         title: Text("Status List $index"),
+                        //         subtitle: Text("History"),
+                        //         trailing: IconButton(
+                        //             onPressed: () {
+                        //               print("Button Pressed");
+                        //             },
+                        //             icon: Icon(Icons.stacked_bar_chart)));
+                        //   },
+                        // ),
                       ],
                     ),
                   )
