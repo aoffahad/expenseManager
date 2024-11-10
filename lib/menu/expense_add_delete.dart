@@ -11,6 +11,7 @@ class ExpenseAddDelete extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
+          backgroundColor: Colors.white,
           body: DefaultTabController(
               length: 2,
               child: Column(
@@ -18,8 +19,9 @@ class ExpenseAddDelete extends ConsumerWidget {
                   Material(
                     child: Container(
                       height: 60,
-                      color: Colors.white,
+                      color: Colors.transparent,
                       child: TabBar(
+                        dividerColor: Colors.transparent,
                         physics: const ClampingScrollPhysics(),
                         padding: const EdgeInsets.only(
                             top: 10, bottom: 10, right: 10, left: 10),
