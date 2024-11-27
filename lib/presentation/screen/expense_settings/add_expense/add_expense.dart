@@ -355,6 +355,7 @@ class _AddExpenseState extends ConsumerState<AddExpense> {
                                     softWrap: true,
                                     overflow: TextOverflow.clip,
                                     maxLines: 2,
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -365,7 +366,7 @@ class _AddExpenseState extends ConsumerState<AddExpense> {
                                 flex: 3,
                                 child: Text(
                                   _addExpense[index]['add_amount_date_time'],
-                                  style: const TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.white),
                                   softWrap: true,
                                   overflow: TextOverflow.clip,
                                 ),
@@ -375,6 +376,7 @@ class _AddExpenseState extends ConsumerState<AddExpense> {
                                 child: Text(
                                   "৳ ${_addExpense[index]['add_amount']}",
                                   style: const TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w900),
                                   softWrap: true,
                                   overflow: TextOverflow.clip,

@@ -75,11 +75,11 @@ class ExpenseAddDelete extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: TabBarView(
                       children: [
                         /// Tab 1 (Add Amount)
-                        const AddAmount(),
+                        AddAmount(),
 
                         /// Tab 2 (Add Expense)
                         AddExpense(),

@@ -351,6 +351,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                                   width: 80,
                                   child: Text(
                                     _addAmount[index]['source_of_income'],
+                                    style: const TextStyle(color: Colors.white),
                                     softWrap: true,
                                     overflow: TextOverflow.clip,
                                     maxLines: 2,
@@ -364,7 +365,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                                 flex: 3,
                                 child: Text(
                                   _addAmount[index]['add_amount_date_time'],
-                                  style: const TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.white),
                                   softWrap: true,
                                   overflow: TextOverflow.clip,
                                 ),
@@ -374,6 +375,7 @@ class _AddAmountState extends ConsumerState<AddAmount> {
                                 child: Text(
                                   "৳ ${_addAmount[index]['add_amount']}",
                                   style: const TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w900),
                                   softWrap: true,
                                   overflow: TextOverflow.clip,

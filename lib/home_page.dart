@@ -1,3 +1,4 @@
+import 'package:expense_manager/core/constance/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:primer_progress_bar/primer_progress_bar.dart';
 
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           leading: const Icon(Icons.segment_sharp),
           actions: const [Icon(Icons.search)],
-          title: Text(
+          title: const Text(
             "Expense Manager",
             style: TextStyle(
                 fontFamily: 'Whisper',
@@ -84,7 +85,8 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(top: 20, left: 20),
                                 child: Text(
-                                  "Md Omar Faruque Fahad",
+                                  // "Md Omar Faruque Fahad",
+                                  userName,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
@@ -150,9 +152,29 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Categories"),
+                      Text(
+                        "Categories",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                       Row(
-                        children: [Text("View All"), Icon(Icons.arrow_forward)],
+                        children: [
+                          Text(
+                            "View All",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.blue,
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -160,7 +182,16 @@ class HomePage extends StatelessWidget {
                 categories_widget(),
                 const Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("Today's Report:")],
+                  children: [
+                    Text(
+                      "Today's Report:",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
                 ),
                 // TodaysReport(),
                 TodaysReportCard(
